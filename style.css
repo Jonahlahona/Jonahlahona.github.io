@@ -93,7 +93,7 @@ footer {
 .content {
   height: 1000px;
   min-height: 1000px;
-  background: #291f1f;
+  background: #321616;
   position: relative;
   z-index: 1;
 }
@@ -150,12 +150,12 @@ h1 {
 }
 
 .project-card {
-  background-color: #433232;
+  background-color: #231110;
   font-family: "Baumans";
   border-radius: 12px;
   padding: 24px;
   text-align: center;
-  border: 3px solid #5d4646; /* A very light gray border */
+  border: 3px solid #432827; /* A very light gray border */
   transition: box-shadow 0.3s ease; /* Makes the hover look smooth */
   display: flex;
   flex-direction: column;
