@@ -1,0 +1,222 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Baumans&family=Niconne&display=swap");
+
+/* Animation for flying in from the left */
+@keyframes flyInLeft {
+  0% {
+    transform: translateX(
+      -100vw
+    ); /* Starts completely off-screen to the left */
+    opacity: 0; /* Starts transparent for a smoother look */
+  }
+  100% {
+    transform: translateX(0); /* Ends at its normal position */
+    opacity: 1;
+  }
+}
+
+/* Animation for flying in from the right */
+@keyframes flyInRight {
+  0% {
+    transform: translateX(
+      100vw
+    ); /* Starts completely off-screen to the right */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+header h1 {
+  animation: flyInLeft 1.5s ease-out forwards;
+}
+
+/* Apply to the sub-text */
+header .sub-text {
+  animation: flyInRight 1.5s ease-out forwards;
+}
+
+#scroll-animate {
+  overflow: hidden;
+}
+
+#scroll-animate-main {
+  width: 100%;
+  left: 0;
+  position: fixed;
+}
+
+#heightPage,
+#heightScroll {
+  width: 10px;
+  top: 0;
+  position: absolute;
+  z-index: 99;
+}
+
+#heightPage {
+  left: 0;
+}
+
+#heightScroll {
+  right: 0;
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.5)),
+    url(https://cdnb.artstation.com/p/assets/images/images/098/638/059/large/jonah-tangreen-cup.jpg?1777603903)
+      no-repeat center center;
+
+  top: 0;
+  position: fixed;
+  z-index: -1;
+}
+
+footer {
+  width: 100%;
+  height: 300px;
+  background: gray;
+  bottom: -300px;
+  position: fixed;
+  z-index: -1;
+}
+
+.content {
+  height: 1000px;
+  min-height: 1000px;
+  background: #291f1f;
+  position: relative;
+  z-index: 1;
+}
+
+.wrapper-parallax {
+  margin-top: 100%;
+  margin-bottom: 300px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  width: 100%;
+  padding: 0;
+  margin-top: 50px;
+  margin-bottom: 350px;
+  line-height: 0.1;
+  text-align: center;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "comfortaa", sans-serif;
+  font-size: 50px;
+  color: #cdbcbc;
+}
+
+.content-header {
+  text-align: center;
+  font-family: "comfortaa", sans-serif;
+  font-size: 40px;
+  color: #cdbcbc;
+  padding-top: 25px;
+}
+
+.sub-text {
+  text-shadow: 2px 2px 1px #000000;
+
+  color: #cdbcbc;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 0px;
+  line-height: 1; /* This overrides the huge line-height from the parent */
+  display: block;
+  font-family: "Niconne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.gallery-grid {
+  display: grid;
+  /* This creates as many 250px columns as will fit, then fills the rest of the space */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px; /* The "white space" between your products */
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto; /* Centers the whole gallery on the page */
+}
+
+.project-card {
+  background-color: #433232;
+  font-family: "Baumans";
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  border: 3px solid #5d4646; /* A very light gray border */
+  transition: box-shadow 0.3s ease; /* Makes the hover look smooth */
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-out;
+  color: #cdbcbc;
+}
+
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #cdbcbc; /* Google's standard dark gray for text */
+}
+
+.project-card:hover {
+  /* The shadow you are transitioning to */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  /* Lifts the card slightly off the page */
+  transform: translateY(-5px);
+}
+
+.project-card a {
+  margin-top: auto; /* Pushes the button to the bottom */
+
+  /* Basic Button Styling */
+  display: inline-block;
+  background-color: #5d4646;
+  color: #cdbcbc;
+  padding: 10px 15px;
+  text-decoration: none; /* Removes the default underline */
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s; /* Smooth color change on hover */
+}
+
+.content h1 {
+  color: #cdbcbc;
+}
+
+footer h1 {
+  line-height: 300px;
+}
+
+header,
+footer,
+#scroll-animate-main {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-property: all;
+
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
