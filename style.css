@@ -2,6 +2,24 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Baumans&family=Niconne&display=swap");
 
+/* This hides the break on desktop screens */
+@media (min-width: 768px) {
+  header h1 br {
+    display: none;
+  }
+
+  header h1 {
+    line-height: 1.2; /* Set back to normal spacing for a single line */
+  }
+}
+
+/* This keeps things tight on mobile */
+@media (max-width: 767px) {
+  header h1 {
+    line-height: 0.8; /* Keep that stacked look snug */
+  }
+}
+
 /* Animation for flying in from the left */
 @keyframes flyInLeft {
   0% {
