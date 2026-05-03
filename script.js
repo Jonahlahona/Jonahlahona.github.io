@@ -1,4 +1,4 @@
-$(window).scroll(function () {
+$(window).on("load", (function () {
   var scrollDistance = $(window).scrollTop();
   var newOpacity = 1 - scrollDistance / 400;
   var moveUp = -(scrollDistance * 0.5);
