@@ -109,7 +109,7 @@ footer {
   width: 100%;
   height: 100px;
   /* Vignette background fading from popup color (center) to content red (edges) */
-  background: radial-gradient(ellipse at center, #231110 0%, #321616 100%);
+  background: radial-gradient(ellipse at center, #231110 0%, #321616 70%, #321616 100%);
   bottom: -300px;
   position: fixed;
   z-index: 0;
