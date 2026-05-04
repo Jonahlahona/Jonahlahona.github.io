@@ -69,6 +69,7 @@ header .sub-text {
   width: 100%;
   left: 0;
   position: fixed;
+  pointer-events: none;
 }
 
 #heightPage,
@@ -88,6 +89,7 @@ header .sub-text {
 }
 
 header {
+  pointer-events: auto;
   width: 100%;
   height: 100vh;
   flex-direction: column;
@@ -99,19 +101,27 @@ header {
 
   top: 0;
   position: fixed;
-  z-index: -1;
+  z-index: 0;
 }
 
 footer {
+  pointer-events: auto;
   width: 100%;
   height: 100px;
-  background: gray;
+  /* Vignette background fading from popup color (center) to content red (edges) */
+  background: radial-gradient(ellipse at center, #231110 0%, #321616 100%);
   bottom: -300px;
   position: fixed;
-  z-index: -1;
+  z-index: 0;
+  transition: z-index 0s;
+}
+
+footer:hover {
+  z-index: 2;
 }
 
 .content {
+  pointer-events: auto;
   height: 1000px;
   min-height: 1000px;
   background: #321616;
@@ -233,6 +243,9 @@ h1 {
 
 footer h1 {
   line-height: 15px;
+  margin: 0;
+  padding-top: 40px;
+  /* To center it vertically within the 100px footer */
 }
 
 header,
@@ -256,15 +269,17 @@ footer,
   display: inline-block;
   width: 100%;
   text-align: center;
+  z-index: 5;
 }
 
 .social-box {
   position: absolute;
-  /* Position it just above the "Contact Me!" text */
-  bottom: 80px; 
+  /* Position it just above the text */
+  bottom: 100%;
   left: 50%;
   transform: translateX(-50%) translateY(20px);
-  background: rgba(35, 17, 16, 0.85); /* Matching the theme color */
+  background: rgba(35, 17, 16, 0.85);
+  /* Matching the theme color */
   backdrop-filter: blur(10px);
   padding: 15px 30px;
   border-radius: 12px;
@@ -272,17 +287,19 @@ footer,
   gap: 25px;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy fade in */
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Bouncy fade in */
   border: 2px solid #432827;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 /* Create a transparent bridge so the hover doesn't drop when moving mouse from text to box */
 .social-box::after {
   content: '';
   position: absolute;
-  bottom: -40px; /* Bridge height */
+  bottom: -40px;
+  /* Bridge height */
   left: 0;
   width: 100%;
   height: 40px;
@@ -304,5 +321,5 @@ footer,
 
 .social-icon:hover {
   color: #ffffff;
-  transform: translateY(-5px);
-}
+  transform: translateY(-3px);
+}
