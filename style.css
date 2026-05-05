@@ -283,7 +283,7 @@ footer,
   /* Position it just above the text */
   bottom: 100%;
   left: 50%;
-  transform: translateX(-50%) translateY(20px);
+  transform: translateX(-50%) translateY(50px);
   background: rgba(35, 17, 16, 0.85);
   /* Matching the theme color */
   backdrop-filter: blur(10px);
@@ -315,7 +315,7 @@ footer,
 .social-box:hover {
   opacity: 1;
   visibility: visible;
-  transform: translateX(-50%) translateY(0);
+  transform: translateX(-50%) translateY(30px);
   pointer-events: auto;
 }
 
