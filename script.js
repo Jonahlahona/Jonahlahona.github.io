@@ -13,7 +13,7 @@ $(window).on("load", function () {
     var windowHeight = $(window).height(),
         headerHeight = windowHeight,
         footerHeight = $("footer").height(),
-        heightDocument = headerHeight + $(".content").height() + $("footer").height() - 20;
+        heightDocument = headerHeight + $(".content").height() + $("footer").height() - 60;
 
     // Defining the size of the element to animate
     $("#scroll-animate, #scroll-animate-main").css({ height: heightDocument + "px" });
