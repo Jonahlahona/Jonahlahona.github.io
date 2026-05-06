@@ -2,6 +2,13 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Baumans&family=Niconne&display=swap");
 
+:root {
+  --card-height: 450px;
+  --card-margin: 40px;
+  --card-top-offset: 2em;
+  --numcards: 3;
+}
+
 /* This hides the break on desktop screens */
 @media (min-width: 768px) {
   header h1 br {
@@ -108,25 +115,34 @@ footer {
   pointer-events: auto;
   width: 100%;
   height: 130px;
-  /* Vignette background fading from popup color (center) to content red (edges) */
-  background: radial-gradient(ellipse at 50% 70%, #231110 0%, #321616 70%, #321616 100%);
   bottom: -300px;
   position: fixed;
-  z-index: 0;
+  z-index: 2;
   transition: z-index 0s;
 }
 
-footer:hover {
-  z-index: 2;
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Vignette background fading from popup color (center) to content red (edges) */
+  background: radial-gradient(ellipse at 50% 70%, #231110 0%, #321616 70%, #321616 100%);
+  -webkit-mask-image: linear-gradient(to top, black calc(100% - 40px), black calc(70% - 40px), black calc(50% - 40px), transparent 100%);
+  mask-image: linear-gradient(to top, black calc(100% - 40px), black calc(70% - 40px), black calc(50% - 40px), transparent 100%);
+  z-index: -1;
 }
 
 .content {
   pointer-events: none;
-  height: 1000px;
-  min-height: 1000px;
+  height: auto;
+  min-height: 100vh;
   background: #321616;
   position: relative;
   z-index: 1;
+  padding-bottom: 100px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
   -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
   mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
@@ -177,18 +193,20 @@ h1 {
   font-style: normal;
 }
 
+/*
 .gallery-grid {
   display: grid;
   /* This creates as many 250px columns as will fit, then fills the rest of the space */
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
-  /* The "white space" between your products */
-  padding: 40px;
-  max-width: 1200px;
-  margin: 0 auto;
-  /* Centers the whole gallery on the page */
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 30px;
+/* The "white space" between your products */
+padding: 40px;
+max-width: 1200px;
+margin: 0 auto;
+/* Centers the whole gallery on the page */
 }
 
+/*
 .project-card {
   background-color: #231110;
   font-family: "Baumans";
@@ -197,21 +215,23 @@ h1 {
   text-align: center;
   border: 3px solid #432827;
   /* A very light gray border */
-  transition: box-shadow 0.3s ease;
-  /* Makes the hover look smooth */
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s ease-out;
-  color: #cdbcbc;
+transition: box-shadow 0.3s ease;
+/* Makes the hover look smooth */
+display: flex;
+flex-direction: column;
+transition: all 0.3s ease-out;
+color: #cdbcbc;
 }
 
+/*
 .project-card img {
   width: 100%;
   height: auto;
   border-radius: 8px;
   margin-bottom: 15px;
 }
-
+*/
+/*
 .project-card h3 {
   font-size: 1.2rem;
   margin: 10px 0;
@@ -219,12 +239,14 @@ h1 {
   /* Google's standard dark gray for text */
 }
 
+
 .project-card:hover {
   /* The shadow you are transitioning to */
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
   /* Lifts the card slightly off the page */
   transform: translateY(-5px);
 }
+
 
 .project-card a {
   margin-top: auto;
@@ -298,6 +320,7 @@ footer,
   border: 2px solid #432827;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
   pointer-events: none;
+  z-index: 10;
 }
 
 /* Create a transparent bridge so the hover doesn't drop when moving mouse from text to box */
@@ -328,4 +351,133 @@ footer,
 .social-icon:hover {
   color: #ffffff;
   transform: translateY(-3px);
+}
+
+/* Stacking Cards */
+#cards {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--numcards), var(--card-height));
+  gap: var(--card-margin);
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+}
+
+.card {
+  position: sticky;
+  top: 0;
+  padding-top: calc(var(--index) * var(--card-top-offset));
+}
+
+#card_1 {
+  --index: 1;
+  --index0: 0;
+  --reverse-index: 3;
+  --reverse-index0: 2;
+}
+
+#card_2 {
+  --index: 2;
+  --index0: 1;
+  --reverse-index: 2;
+  --reverse-index0: 1;
+}
+
+#card_3 {
+  --index: 3;
+  --index0: 2;
+  --reverse-index: 1;
+  --reverse-index0: 0;
+}
+
+.card__content {
+  background-color: #231110;
+  color: #cdbcbc;
+  border-radius: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "text img";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  align-items: stretch;
+  border: 3px solid #432827;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  height: var(--card-height);
+}
+
+.card__content>div {
+  grid-area: text;
+  width: 80%;
+  place-self: center;
+  text-align: left;
+  padding: 40px;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.card__content h2 {
+  font-family: 'Baumans', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #cdbcbc;
+}
+
+.card__content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card__content .btn {
+  display: inline-block;
+  background-color: #5d4646;
+  color: #cdbcbc;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.card__content .btn:hover {
+  background-color: #cdbcbc;
+  color: #231110;
+  transform: translateY(-2px);
+}
+
+.card__content>figure {
+  grid-area: img;
+  overflow: hidden;
+  margin: 0;
+}
+
+.card__content>figure>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .card__content {
+    grid-template-areas:
+      "img"
+      "text";
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
+    height: auto;
+    min-height: 500px;
+    --card-height: auto;
+  }
+
+  .card__content>div {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .card__content h2 {
+    font-size: 1.8rem;
+  }
 }
