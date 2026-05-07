@@ -42,4 +42,22 @@ $(window).on("load", function () {
             transform: "translateY(" + moveUp + "px)"
         });
     };
+
+    // Email Copy to Clipboard Logic
+    $('.email-copy').on('click', function (e) {
+        e.preventDefault();
+        const email = $(this).data('email');
+
+        navigator.clipboard.writeText(email).then(() => {
+            const $tooltip = $(this).find('.copy-tooltip');
+            $tooltip.addClass('show');
+
+            // Hide tooltip after 2 seconds
+            setTimeout(() => {
+                $tooltip.removeClass('show');
+            }, 2000);
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    });
 });
