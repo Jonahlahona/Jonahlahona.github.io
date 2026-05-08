@@ -3,7 +3,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Baumans&family=Niconne&display=swap");
 
 :root {
-  --card-height: 450px;
+  --card-height: 520px;
   --card-margin: 40px;
   --card-top-offset: 2em;
   --numcards: 3;
@@ -417,7 +417,6 @@ footer,
   --index0: 0;
   --reverse-index: 3;
   --reverse-index0: 2;
-  --card-height: 520px;
 }
 
 #card_2 {
