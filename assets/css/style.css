@@ -111,6 +111,10 @@ header {
   z-index: 0;
 }
 
+header.header-half {
+  height: 50vh;
+}
+
 footer {
   pointer-events: auto;
   width: 100%;

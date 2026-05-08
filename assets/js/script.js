@@ -11,7 +11,7 @@ function scrollFooter(scrollY, heightFooter) {
 // 1. Corrected load syntax for the main wrapper
 $(window).on("load", function () {
     var windowHeight = $(window).height(),
-        headerHeight = windowHeight,
+        headerHeight = $("header").height(),
         footerHeight = $("footer").height(),
         heightDocument = headerHeight + $(".content").outerHeight() + $("footer").outerHeight() - 90;
 
