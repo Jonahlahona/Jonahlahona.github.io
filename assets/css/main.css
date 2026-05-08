@@ -1,0 +1,648 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Baumans&family=Niconne&display=swap");
+
+:root {
+  --card-height: 520px;
+  --card-margin: 40px;
+  --card-top-offset: 2em;
+  --numcards: 3;
+}
+
+body {
+  background: #321616;
+  margin: 0;
+  padding: 0;
+}
+
+/* This hides the break on desktop screens */
+@media (min-width: 768px) {
+  header h1 br {
+    display: none;
+  }
+
+  header h1 {
+    line-height: 1.2;
+    /* Set back to normal spacing for a single line */
+  }
+}
+
+/* This keeps things tight on mobile */
+@media (max-width: 767px) {
+  header h1 {
+    line-height: 0.8;
+    /* Keep that stacked look snug */
+  }
+}
+
+/* Animation for flying in from the left */
+@keyframes flyInLeft {
+  0% {
+    transform: translateX(-100vw);
+    /* Starts completely off-screen to the left */
+    opacity: 0;
+    /* Starts transparent for a smoother look */
+  }
+
+  100% {
+    transform: translateX(0);
+    /* Ends at its normal position */
+    opacity: 1;
+  }
+}
+
+/* Animation for flying in from the right */
+@keyframes flyInRight {
+  0% {
+    transform: translateX(100vw);
+    /* Starts completely off-screen to the right */
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+header h1 {
+  animation: flyInLeft 1.5s ease-out forwards;
+}
+
+/* Apply to the sub-text */
+header .sub-text {
+  animation: flyInRight 1.5s ease-out forwards;
+}
+
+#scroll-animate {
+  overflow: hidden;
+}
+
+#scroll-animate-main {
+  width: 100%;
+  left: 0;
+  position: fixed;
+  pointer-events: none;
+}
+
+#heightPage,
+#heightScroll {
+  width: 10px;
+  top: 0;
+  position: absolute;
+  z-index: 99;
+}
+
+#heightPage {
+  left: 0;
+}
+
+#heightScroll {
+  right: 0;
+}
+
+header {
+  pointer-events: auto;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.4) 75%, rgba(0, 0, 0, 0.8) 100%) 100%,
+    url(https://cdnb.artstation.com/p/assets/images/images/098/638/059/large/jonah-tangreen-cup.jpg?1777603903) no-repeat 50% center;
+
+  top: 0;
+  position: fixed;
+  z-index: 0;
+}
+
+header.header-half {
+  height: 50vh;
+}
+
+footer {
+  pointer-events: auto;
+  width: 100%;
+  height: 130px;
+  bottom: -300px;
+  position: fixed;
+  z-index: 2;
+  transition: z-index 0s;
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Vignette background fading from popup color (center) to content red (edges) */
+  background: radial-gradient(ellipse at 50% 70%, #231110 0%, #321616 70%, #321616 100%);
+  -webkit-mask-image: linear-gradient(to top, black calc(100% - 40px), black calc(70% - 40px), black calc(50% - 40px), transparent 100%);
+  mask-image: linear-gradient(to top, black calc(100% - 40px), black calc(70% - 40px), black calc(50% - 40px), transparent 100%);
+  z-index: -1;
+}
+
+.content {
+  pointer-events: none;
+  height: auto;
+  min-height: 100vh;
+  background: #321616;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 100px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+  -webkit-mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
+  mask-image: linear-gradient(to bottom, black calc(100% - 40px), transparent 100%);
+}
+
+.content * {
+  pointer-events: auto;
+}
+
+.wrapper-parallax {
+  margin-top: 100vh;
+  margin-bottom: 300px;
+}
+
+.wrapper-parallax--half {
+  margin-top: 50vh;
+}
+
+h1 {
+  width: 100%;
+  padding: 0;
+  margin-top: 50px;
+  margin-bottom: 350px;
+  line-height: 0.1;
+  text-align: center;
+  text-shadow: 2px 2px 2px #000000;
+  font-family: "comfortaa", sans-serif;
+  font-size: 50px;
+  color: #cdbcbc;
+}
+
+.content-header {
+  text-align: center;
+  font-family: "comfortaa", sans-serif;
+  font-size: 40px;
+  color: #cdbcbc;
+  padding-top: 25px;
+}
+
+.sub-text {
+  text-shadow: 2px 2px 1px #000000;
+
+  color: #cdbcbc;
+  text-align: center;
+  font-size: 25px;
+  margin-top: 0px;
+  line-height: 1;
+  /* This overrides the huge line-height from the parent */
+  display: block;
+  font-family: "Niconne", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*
+.gallery-grid {
+  display: grid;
+grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+gap: 30px;
+/* The "white space" between your products 
+padding: 40px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+*/
+
+/* 
+.project-card {
+  background-color: #231110;
+  font-family: "Baumans";
+  border-radius: 12px;
+  padding: 24px;
+  text-align: center;
+  border: 3px solid #432827;
+  transition: box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease-out;
+  color: #cdbcbc; 
+}
+*/
+
+/*
+.project-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+*/
+
+/*
+.project-card h3 {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #cdbcbc;
+}
+*/
+
+/*
+.project-card:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-5px);
+}
+*/
+
+/*
+.project-card a {
+  margin-top: auto;
+  display: inline-block;
+  background-color: #5d4646;
+  color: #cdbcbc;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+*/
+
+.content h1 {
+  color: #cdbcbc;
+}
+
+footer h1 {
+  line-height: 15px;
+  margin: 0;
+  padding-top: 70px;
+  /* To center it vertically within the 100px footer */
+}
+
+header,
+footer,
+#scroll-animate-main {
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  transition-property: all;
+
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+
+  -webkit-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+  -moz-transition-timing-function: cubic-bezier(0, 0, 0, 1);
+  transition-timing-function: cubic-bezier(0, 0, 0, 1);
+}
+
+.contact-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  z-index: 5;
+}
+
+.social-box {
+  position: absolute;
+  /* Position it just above the text */
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(50px);
+  background: rgba(35, 17, 16, 0.85);
+  /* Matching the theme color */
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  border-radius: 12px;
+  display: flex;
+  gap: 25px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Bouncy fade in */
+  border: 2px solid #432827;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Create a transparent bridge so the hover doesn't drop when moving mouse from text to box */
+.social-box::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  /* Bridge height */
+  left: 0;
+  width: 100%;
+  height: 40px;
+}
+
+.contact-container:hover .social-box,
+.social-box:hover {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(30px);
+  pointer-events: auto;
+}
+
+.social-icon {
+  color: #cdbcbc;
+  font-size: 28px;
+  transition: color 0.3s, transform 0.3s;
+}
+
+.social-icon:hover {
+  color: #ffffff;
+  transform: translateY(-3px);
+}
+
+.email-copy {
+  position: relative;
+}
+
+.copy-tooltip {
+  position: absolute;
+  bottom: 150%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #ffffff;
+  color: #231110;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: 'Comfortaa', sans-serif;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip arrow */
+.copy-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #ffffff transparent transparent transparent;
+}
+
+.copy-tooltip.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Stacking Cards */
+#cards {
+  list-style: none;
+  padding-left: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--numcards), var(--card-height));
+  gap: var(--card-margin);
+  width: 90%;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+}
+
+.card {
+  position: sticky;
+  top: 0;
+  padding-top: calc(var(--index) * var(--card-top-offset));
+}
+
+#card_1 {
+  --index: 1;
+  --index0: 0;
+  --reverse-index: 3;
+  --reverse-index0: 2;
+}
+
+#card_2 {
+  --index: 2;
+  --index0: 1;
+  --reverse-index: 2;
+  --reverse-index0: 1;
+}
+
+#card_3 {
+  --index: 3;
+  --index0: 2;
+  --reverse-index: 1;
+  --reverse-index0: 0;
+}
+
+.card__content {
+  background-color: #231110;
+  color: #cdbcbc;
+  border-radius: 20px;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "text img";
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  align-items: stretch;
+  border: 3px solid #432827;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+  height: var(--card-height);
+}
+
+.card__content>div {
+  grid-area: text;
+  width: 80%;
+  place-self: center;
+  text-align: left;
+  padding: 40px;
+  font-family: 'Comfortaa', sans-serif;
+}
+
+.card__content h2 {
+  font-family: 'Baumans', cursive;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #cdbcbc;
+}
+
+.card__content p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.card__content .btn {
+  display: inline-block;
+  background-color: #5d4646;
+  color: #cdbcbc;
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.card__content .btn:hover {
+  background-color: #cdbcbc;
+  color: #231110;
+  transform: translateY(-2px);
+}
+
+.card__content>figure {
+  grid-area: img;
+  overflow: hidden;
+  margin: 0;
+}
+
+.card__content>figure>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Card 1 Vertical Stack specific */
+.card__content--vertical {
+  grid-template-areas:
+    "header"
+    "scene"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  text-align: center;
+  padding: 0;
+}
+
+.card__content--vertical>div {
+  grid-area: auto;
+  /* Reset */
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+
+.card__content--vertical .card__header {
+  grid-area: header;
+  padding-top: 15px;
+}
+
+.card__content--vertical .scene {
+  grid-area: scene;
+  align-self: center;
+  width: 100%;
+}
+
+.card__content--vertical .card__footer {
+  grid-area: footer;
+  padding-bottom: 15px;
+}
+
+.card__content--vertical .card__header h2 {
+  margin-bottom: 0;
+}
+
+.card__content--vertical .card__footer p {
+  margin-bottom: 10px;
+}
+
+/* 3D CodePen Styles */
+.scene,
+.a3d {
+  display: grid;
+}
+
+.scene {
+  overflow: hidden;
+  perspective: 60em;
+  perspective-origin: center;
+  -webkit-mask-image: linear-gradient(to right, transparent 5%, black 50%, transparent 95%);
+  mask-image: linear-gradient(to right, transparent 5%, black 50%, transparent 95%);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+}
+
+.a3d {
+  transform-style: preserve-3d;
+  animation: ry 32s linear infinite;
+}
+
+@keyframes ry {
+  to {
+    transform: rotateY(1turn);
+  }
+}
+
+.a3d-card {
+  --w: 14em;
+  --ba: calc(360deg/var(--n));
+  grid-area: 1/ 1;
+  width: var(--w);
+  aspect-ratio: 2/ 3;
+  border-radius: 1em;
+  backface-visibility: hidden;
+  transform: rotateY(calc(var(--i)*var(--ba))) translateZ(calc(-1*(.5*var(--w) + .5em)/tan(.5*var(--ba))));
+  object-fit: cover;
+  border: 2px solid #432827;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a3d {
+    animation-duration: 128s;
+  }
+}
+
+@media (max-width: 768px) {
+  .card__content {
+    grid-template-areas:
+      "img"
+      "text";
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr;
+    height: auto;
+    min-height: 500px;
+    --card-height: auto;
+  }
+
+  .card__content>div {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .card__content h2 {
+    font-size: 1.8rem;
+  }
+
+  .card__content--vertical {
+    grid-template-areas:
+      "header"
+      "scene"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 300px auto;
+  }
+
+  .card__content--vertical .card__header,
+  .card__content--vertical .card__footer {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .a3d-card {
+    --w: 10em;
+  }
+}
