@@ -417,6 +417,7 @@ footer,
   --index0: 0;
   --reverse-index: 3;
   --reverse-index0: 2;
+  --card-height: 520px;
 }
 
 #card_2 {
@@ -551,15 +552,18 @@ footer,
 
 .scene {
   overflow: hidden;
-  perspective: 35em;
-  -webkit-mask-image: linear-gradient(to right, transparent 20%, black 45%, black 55%, transparent 90%);
-  mask-image: linear-gradient(to right, transparent 20%, black 45%, black 55%, transparent 90%);
+  perspective: 60em;
+  perspective-origin: center;
+  -webkit-mask-image: linear-gradient(to right, transparent 5%, black 50%, transparent 95%);
+  mask-image: linear-gradient(to right, transparent 5%, black 50%, transparent 95%);
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 10px 0;
 }
 
 .a3d {
-  place-self: center;
   transform-style: preserve-3d;
   animation: ry 32s linear infinite;
 }
@@ -571,7 +575,7 @@ footer,
 }
 
 .a3d-card {
-  --w: 10em;
+  --w: 14em;
   --ba: calc(360deg/var(--n));
   grid-area: 1/ 1;
   width: var(--w);
@@ -626,6 +630,6 @@ footer,
   }
 
   .a3d-card {
-    --w: 8em;
+    --w: 10em;
   }
 }
