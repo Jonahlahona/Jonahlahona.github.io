@@ -607,15 +607,16 @@ footer,
 }
 
 @media (max-width: 768px) {
+  :root {
+    --card-height: 550px;
+  }
+
   .card__content {
     grid-template-areas:
       "img"
       "text";
     grid-template-columns: 1fr;
     grid-template-rows: 200px 1fr;
-    height: auto;
-    min-height: 500px;
-    --card-height: auto;
   }
 
   .card__content>div {
@@ -633,7 +634,7 @@ footer,
       "scene"
       "footer";
     grid-template-columns: 1fr;
-    grid-template-rows: auto 300px auto;
+    grid-template-rows: auto 1fr auto;
   }
 
   .card__content--vertical .card__header,
@@ -643,6 +644,6 @@ footer,
   }
 
   .a3d-card {
-    --w: 10em;
+    --w: 15em;
   }
 }
