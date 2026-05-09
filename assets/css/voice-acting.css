@@ -1,0 +1,25 @@
+/* Voice Acting Page Styles */
+
+header {
+    --header-bg: url('https://cdna.artstation.com/p/assets/images/images/069/178/418/large/jonah-tangreen-microphonecloseup.jpg?1699512823');
+    /* Lowered image to show the top of the mic */
+}
+
+/* Custom styles for Voice Acting page */
+.content h2 {
+    font-family: 'Baumans', cursive;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #cdbcbc, #5d4646);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Placeholder for audio player styling */
+.audio-placeholder {
+    background: rgba(35, 17, 16, 0.6);
+    border: 1px solid #432827;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+}

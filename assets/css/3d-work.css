@@ -1,0 +1,15 @@
+/* 3D Work Page Styles */
+
+:root {
+    --header-bg: url('https://cdna.artstation.com/p/assets/images/images/042/636/350/large/jonah-tangreen-blender.jpg?1635063963');
+}
+
+/* Custom styles for 3D Work page */
+.content h2 {
+    font-family: 'Baumans', cursive;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    background: linear-gradient(to bottom, #cdbcbc, #5d4646);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
