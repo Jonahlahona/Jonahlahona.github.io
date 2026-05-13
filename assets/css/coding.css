@@ -1,0 +1,197 @@
+/* ==============================================
+   Coding Page – Taped Paper Notes (from CodePen)
+   Scoped under .notes-board to avoid global conflicts
+   ============================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Architects+Daughter&family=Edu+VIC+WA+NT+Beginner&display=swap");
+
+header.header-half {
+    height: 25vh;
+    --header-bg: url("https://www.bleepstatic.com/content/hl-images/2022/04/08/GitHub__headpic.jpg");
+    --header-pos: 50% 30%;
+}
+
+header.header-half h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.wrapper-parallax--half {
+    margin-top: 25vh;
+}
+
+.notes-board {
+    background-color: #874600;
+    background-image: url("https://www.transparenttextures.com/patterns/wine-cork.png");
+    background-attachment: scroll;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    border-radius: 0;
+    margin: 0;
+    max-width: none;
+    box-sizing: border-box;
+}
+
+.notes-board>section {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.notes-board article {
+    position: relative;
+    width: 25%;
+    height: 45vh;
+    background-color: #fff;
+    background-image: repeating-linear-gradient(transparent,
+            transparent 23.5px,
+            #7fb6d1 23.5px,
+            #7fb6d1 24.5px);
+    padding: 0 3%;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    container-type: inline-size;
+}
+
+/* Red margin line */
+.notes-board article::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 1px;
+    height: 100%;
+    background-color: #ff9999;
+}
+
+/* Tape strip (top-left) */
+.notes-board article::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -15px;
+    width: 55px;
+    height: 22px;
+    background: rgba(222, 205, 170, 0.6);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transform: rotate(-35deg);
+    z-index: 2;
+}
+
+.notes-board article blockquote {
+    font-size: clamp(0.7rem, 5cqw, 1.1rem);
+    color: #2c3e50;
+    text-align: left;
+    margin-top: 2rem;
+    width: 100%;
+    z-index: 1;
+    font-family: "Gloria Hallelujah", cursive;
+    display: block;
+    word-wrap: break-word;
+}
+
+/* Tape strip (top-right) */
+.notes-board article blockquote::after {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: -15px;
+    left: auto;
+    width: 55px;
+    height: 22px;
+    background: rgba(222, 205, 170, 0.6);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+    transform: rotate(35deg);
+    z-index: 2;
+}
+
+.notes-board article cite {
+    font-size: clamp(0.5rem, 4cqw, 0.9rem);
+    color: #555;
+    margin-top: auto;
+    margin-bottom: 1rem;
+    align-self: flex-end;
+    z-index: 1;
+    display: block;
+    font-family: "Gloria Hallelujah", cursive;
+}
+
+/* Alternating fonts & rotations */
+.notes-board article:nth-child(odd) {
+    transform: rotate(1deg);
+    font-family: "Architects Daughter", cursive;
+}
+
+.notes-board article:nth-child(even) {
+    transform: rotate(-1deg);
+    font-family: "Edu VIC WA NT Beginner", cursive;
+}
+
+.notes-board article:nth-child(3n) {
+    transform: rotate(1.5deg);
+}
+
+.notes-board article:nth-child(4n) {
+    transform: rotate(-1.5deg);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1100px) {
+    .notes-board article {
+        width: 42%;
+    }
+}
+
+.torn-paper-wrapper {
+    display: inline-block;
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.35)) drop-shadow(0 0 1px rgba(0,0,0,0.15));
+    margin-top: 30px;
+    z-index: 1;
+    transform: rotate(-2deg);
+    position: relative;
+}
+
+.torn-paper-wrapper::before {
+    content: "";
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%) rotate(8deg);
+    width: 120%;
+    height: 18px;
+    background: rgba(222, 205, 170, 0.55);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.torn-paper-scrap {
+    background: #fefefe;
+    padding: 12px;
+    clip-path: polygon(
+        15% 10%, 25% 5%, 35% 12%, 45% 2%, 55% 15%, 65% 5%, 75% 18%, 85% 10%, 95% 25%, 100% 40%, 92% 55%, 100% 70%, 88% 85%, 75% 95%, 60% 88%, 45% 100%, 30% 92%, 15% 100%, 5% 85%, 12% 70%, 2% 55%, 10% 40%, 0% 25%, 8% 15%
+    );
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.torn-paper-scrap img {
+    display: block;
+    margin: 0;
+}
+
+@media (max-width: 700px) {
+    .notes-board article {
+        width: 85%;
+        padding: 0 5%;
+    }
+}
