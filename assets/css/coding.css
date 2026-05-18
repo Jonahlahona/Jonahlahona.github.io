@@ -176,10 +176,14 @@ header.header-half h1 {
 }
 
 .torn-paper-scrap {
-    background: #fefefe;
-    padding: 12px;
-    clip-path: polygon(15% 10%, 25% 5%, 35% 12%, 45% 2%, 55% 15%, 65% 5%, 75% 18%, 85% 10%, 95% 25%, 100% 40%, 92% 55%, 100% 70%, 88% 85%, 75% 95%, 60% 88%, 45% 100%, 30% 92%, 15% 100%, 5% 85%, 12% 70%, 2% 55%, 10% 40%, 0% 25%, 8% 15%);
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    background-color: transparent;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .torn-paper-scrap img {
