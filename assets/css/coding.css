@@ -70,7 +70,7 @@ header.header-half h1 {
 .notes-board article {
     position: relative;
     width: 25%;
-    height: 45vh;
+    min-height: 45vh;
     background-color: #fff;
     background-image: repeating-linear-gradient(transparent,
             transparent 23.5px,
