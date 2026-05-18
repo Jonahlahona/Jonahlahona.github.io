@@ -11,16 +11,22 @@ function scrollFooter(scrollY, heightFooter) {
 // 1. Corrected load syntax for the main wrapper
 $(window).on("load", function () {
     var windowHeight = $(window).height(),
-        headerHeight = $("header").height(),
-        footerHeight = $("footer").height(),
-        heightDocument = headerHeight + $(".content").outerHeight() + $("footer").outerHeight() - 90;
+        headerHeight = $("header").length ? $("header").height() : 0,
+        footerHeight = $("footer").length ? $("footer").height() : 0,
+        heightDocument = headerHeight + ($(".content").outerHeight() || 0) + footerHeight - 90;
 
     // Defining the size of the element to animate
     $("#scroll-animate, #scroll-animate-main").css({ height: heightDocument + "px" });
 
     // Defining the size of header and content elements
-    $("header").css({ height: headerHeight + "px" });
-    $(".wrapper-parallax").css({ "margin-top": (headerHeight - 1) + "px" });
+    if ($("header").length) {
+        $("header").css({ height: headerHeight + "px" });
+    }
+    // Only set parallax margin-top dynamically if there is a header. 
+    // Otherwise let CSS handle it (e.g. for top-aligned boards).
+    if (headerHeight > 0) {
+        $(".wrapper-parallax").css({ "margin-top": (headerHeight - 1) + "px" });
+    }
 
     scrollFooter(window.scrollY, footerHeight);
 

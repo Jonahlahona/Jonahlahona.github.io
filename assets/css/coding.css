@@ -3,21 +3,11 @@
    Scoped under .notes-board to avoid global conflicts
    ============================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Architects+Daughter&family=Edu+VIC+WA+NT+Beginner&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rock+Salt&family=Gloria+Hallelujah&family=Architects+Daughter&family=Edu+VIC+WA+NT+Beginner&display=swap");
 
-header.header-half {
-    height: 25vh;
-    --header-bg: url("https://www.bleepstatic.com/content/hl-images/2022/04/08/GitHub__headpic.jpg");
-    --header-pos: 50% 30%;
-}
-
-header.header-half h1 {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
+/* Header removed for top-aligned corkboard */
 .wrapper-parallax--half {
-    margin-top: 25vh;
+    margin-top: 0;
 }
 
 .notes-board {
