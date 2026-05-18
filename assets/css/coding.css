@@ -29,11 +29,32 @@ header.header-half h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 3rem 2rem;
+    padding: 3rem 2rem 35vh 2rem; /* Substantial bottom padding keeps bottom section of corkboard empty */
     border-radius: 0;
     margin: 0;
     max-width: none;
     box-sizing: border-box;
+
+    /* Thicker & Ornate Beveled 3D Wooden Frame */
+    border: 36px solid #5d4646;
+    border-top-color: #725858;    /* Dynamic light source highlight (top-left) */
+    border-left-color: #725858;
+    border-bottom-color: #433131; /* Shadow shading (bottom-right) */
+    border-right-color: #433131;
+    
+    box-shadow: 
+        /* --- Inner Molding Detail (On the inside edge of the wood frame) --- */
+        inset 0 0 0 2px #433131,                   /* Inner dark shadow groove */
+        inset 0 0 0 5px #725858,                   /* Inner light raised accent bevel */
+        inset 0 0 22px rgba(0, 0, 0, 0.75),        /* Rich shadow cast by the frame onto the cork */
+        
+        /* --- Outer Molding Detail (Ornate stepped bevels on the outer wood frame edge) --- */
+        0 0 0 2px #433131,                         /* Sharp dark outer groove */
+        0 0 0 8px #5d4646,                         /* Outer wood trim ridge */
+        0 0 0 10px #725858,                        /* Fine highlighted rim */
+        0 0 0 12px #322323,                        /* Dark backing shadow line */
+        0 15px 35px rgba(0, 0, 0, 0.55);           /* Main volumetric soft drop shadow */
+    position: relative;
 }
 
 .notes-board>section {
